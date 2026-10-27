@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ledger — Accounting Software</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><div><h1>Ledger</h1><p>Small business accounting</p></div><div class="toolbar"><button id="export">Download backup</button><label class="button">Restore backup<input type="file" id="import" accept="application/json" hidden></label></div></header>
+<main>
+<nav><button data-page="dashboard" class="active">Dashboard</button><button data-page="journal">Journal</button><button data-page="accounts">Accounts</button><button data-page="reports">Reports</button></nav>
+<section id="dashboard" class="page"><h2>Dashboard</h2><p class="muted">All-time totals based on journal entries.</p><div id="cards" class="cards"></div><h3>Recent entries</h3><div id="recent"></div></section>
+<section id="journal" class="page hidden"><h2>Journal entries</h2><p class="muted">Every entry must have equal total debits and credits. Enter an opening balance as a balanced entry.</p><form id="entryForm" class="panel"><div class="grid"><label>Date<input type="date" id="date" required></label><label>Description<input id="description" maxlength="150" required placeholder="e.g. Paid office rent"></label></div><div class="tablewrap"><table><thead><tr><th>Account</th><th>Debit (₱)</th><th>Credit (₱)</th><th></th></tr></thead><tbody id="lines"></tbody></table></div><div class="formactions"><button type="button" class="secondary" id="addLine">+ Add line</button><strong id="entryTotals"></strong><button type="submit">Save entry</button></div><p id="entryError" class="error" role="alert"></p></form><h3>All journal entries</h3><div id="journalList"></div></section>
+<section id="accounts" class="page hidden"><h2>Chart of accounts</h2><form id="accountForm" class="panel grid"><label>Account name<input id="accountName" required maxlength="80" placeholder="e.g. Office supplies"></label><label>Account type<select id="accountType"><option>Asset</option><option>Liability</option><option>Equity</option><option>Revenue</option><option>Expense</option></select></label><button type="submit">Add account</button></form><p class="muted">Balances use each account type’s normal balance. Accounts with entries cannot be deleted.</p><div id="accountList"></div></section>
+<section id="reports" class="page hidden"><h2>Financial reports</h2><div class="panel grid"><label>From<input type="date" id="fromDate"></label><label>To<input type="date" id="toDate"></label><button id="runReports">Update reports</button></div><p class="muted">Income statement uses the selected date range. Balance sheet includes all entries through the end date.</p><div id="reportsContent"></div></section>
+</main><footer>Data stays in this browser. Export backups regularly. This is a learning and small-business starter, not a replacement for professional accounting or tax software.</footer><script src="app.js"></script>
+</body></html>
